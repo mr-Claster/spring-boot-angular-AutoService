@@ -1,0 +1,54 @@
+.input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0px 20px;
+  box-sizing: border-box;
+}
+
+.btn {
+  background-color: DodgerBlue;
+  width: 100%;
+  border: none;
+  color: white;
+  margin: 8px 0px 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: inherit;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: RoyalBlue;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+.box {
+  width: 500px;
+  height: auto;
+  margin: 0 15px;
+  display: inline-grid;
+}
+
+.item {
+  width: 100px;
+  padding: 10px;
+  background-color: mediumseagreen;
+  border: 2px solid green;
+  display: inline-block;
+  vertical-align: middle
+}
+
+input::-webkit-inner-spin-button {
+  display: none;
+}

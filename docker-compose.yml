@@ -1,0 +1,24 @@
+version: "3"
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=autoservice
+  backend:
+    container_name: AutoService
+    image: auto-service-app
+    build: AutoService/.
+    ports:
+      - "8080:8080"
+  frontend:
+    container_name: auto-service-ui
+    image: auto-service-ui
+    build: frontend/.
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend

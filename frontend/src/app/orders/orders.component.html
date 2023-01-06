@@ -1,0 +1,118 @@
+<label>
+  <div class="box">
+    <h1 class="title">
+      SAVE ORDER
+    </h1>
+    <form [formGroup]="reactiveForm" (ngSubmit)="save()" novalidate>
+      <div class="from-group">
+        <label class="text">Order id:</label>
+        <input type="number" class="input form-control" formControlName="id" placeholder="order id" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Order car id:</label>
+        <input type="number" class="input form-control" formControlName="carId" placeholder="car id" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Order problem description:</label>
+        <input type="text" class="input form-control" formControlName="problemDescription" placeholder="problem description" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Order acceptance date:</label>
+        <input type="datetime-local" step="any" class="input form-control" formControlName="acceptanceDate" placeholder="acceptance date" ngModel>
+      </div>
+      <button class="btn" type="submit">SAVE</button>
+    </form>
+  </div>
+  <div class="box">
+    <h1 class="title">
+      UPDATE ORDER STATUS
+    </h1>
+    <form [formGroup]="statusOrderForm" (ngSubmit)="updateStatus()" novalidate>
+      <div class="from-group">
+        <label class="text">Order id:</label>
+        <input type="number" class="input form-control" formControlName="id" placeholder="order id" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Order status:</label>
+        <select class="input form-control" name="status" formControlName="status" ngModel>
+          <option value="IN_PROCESS">IN_PROCESS</option>
+          <option value="ACCEPTED">ACCEPTED</option>
+          <option value="COMPLETED">COMPLETED</option>
+          <option value="FAILURE">FAILURE</option>
+          <option value="PAID">PAID</option>
+        </select>
+      </div>
+      <button class="btn" type="submit">UPDATE</button>
+    </form>
+  </div>
+  <div class="box">
+    <h1 class="title">
+      ADD PART TO ORDER
+    </h1>
+    <form [formGroup]="orderForm" (ngSubmit)="addPart()" novalidate>
+      <div class="from-group">
+        <label class="text">Order id:</label>
+        <input type="number" class="input form-control" formControlName="id" placeholder="id" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Part name:</label>
+        <input type="text" class="input form-control" formControlName="name" placeholder="name" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Part price:</label>
+        <input type="number" step="any" class="input form-control" formControlName="price" placeholder="price" ngModel>
+      </div>
+      <button class="btn" type="submit">ADD</button>
+    </form>
+  </div>
+  <div class="box">
+    <h1 class="title">
+      ADD FAVOR TO ORDER
+    </h1>
+    <form [formGroup]="favorForm" (ngSubmit)="addFavor()" novalidate>
+      <div class="from-group">
+        <label class="text">Order id:</label>
+        <input type="number" class="input form-control" formControlName="orderId" placeholder="id" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Favor favor name:</label>
+        <input type="text" class="input form-control" formControlName="favorName" placeholder="favor name" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Favor worker id:</label>
+        <input type="number" class="input form-control" formControlName="workerId" placeholder="worker Id" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Favor price:</label>
+        <input type="number" class="input form-control" formControlName="price" placeholder="price" ngModel>
+      </div>
+      <button class="btn" type="submit">ADD</button>
+    </form>
+  </div>
+  <div class="box">
+    <h1 class="title">
+      GET ORDER PRICE
+    </h1>
+    <form [formGroup]="orderPriceForm" (ngSubmit)="getTotalPrice()" novalidate>
+      <div class="from-group">
+        <label class="text">Order id:</label>
+        <input type="number" class="input form-control" formControlName="id" placeholder="id" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Bonus:</label>
+        <input type="number" class="input form-control" formControlName="bonus" placeholder="bonus" ngModel>
+      </div>
+      <div>
+        <label class="text">PRICE:</label>
+        <input type="number" class="show" [value]="totalPrice" readonly>
+      </div >
+      <button class="btn"  type="submit">PRICE</button>
+    </form>
+  </div>
+  <div class="item" *ngFor="let order of orders">
+    id:{{order.id}}<br>
+    carId:{{order.carId}}<br>
+    problem:{{order.problemDescription}}<br>
+    date:{{order.acceptanceDate}}
+  </div>
+</label>

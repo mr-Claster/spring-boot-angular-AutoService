@@ -1,0 +1,7 @@
+.idea
+api/.idea
+api/AutoService.iml
+frontend/.idea
+
+# Project exclude paths
+/frontend/node_modules/

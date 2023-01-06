@@ -1,0 +1,45 @@
+<label>
+  <div class="box">
+    <h1 class="title">
+      CREATE/SAVE CUSTOMER
+    </h1>
+    <form [formGroup]="reactiveForm" (ngSubmit)="save()" novalidate>
+      <div class="from-group">
+        <label class="text">Customer id:</label>
+        <input type="number" class="input form-control" formControlName="id" placeholder="id" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Customer first name:</label>
+        <input type="text" class="input form-control" formControlName="firstName" placeholder="first name" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Customer last name:</label>
+        <input type="text" class="input form-control" formControlName="lastName" placeholder="last name" ngModel>
+      </div>
+      <button class="btn" type="submit">SAVE</button>
+    </form>>
+  </div>
+  <h1 class="title">
+    GET ALL ORDER BY ID
+  </h1>
+  <div class="box">
+    <form [formGroup]="idForm" (ngSubmit)="getAllOrderById()" novalidate>
+      <div>
+        <label class="text">Customer id:</label>
+        <input type="number" class="input" formControlName="id" placeholder="id" ngModel>
+      </div>
+      <button class="btn" type="submit">GET</button>
+    </form>
+  </div>
+  <div class="item" *ngFor="let order of orders">
+    id:{{order.id}}<br>
+    description:{{order.problemDescription}}<br>
+    carId:{{order.carId}}<br>
+    acceptDate:{{order.acceptanceDate}}
+  </div>
+  <div class="item" *ngFor="let customer of customers">
+    &nbsp;&nbsp;&nbsp;id:{{customer.id}}<br>
+    &nbsp;&nbsp;&nbsp;name:{{customer.firstName}}<br>
+    &nbsp;&nbsp;&nbsp;price:{{customer.lastName}}
+  </div>
+</label>

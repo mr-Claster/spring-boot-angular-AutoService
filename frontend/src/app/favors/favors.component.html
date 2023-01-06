@@ -1,0 +1,51 @@
+<label>
+  <div class="box">
+    <h1 class="title">
+      CREATE FAVOR
+    </h1>
+    <from [formGroup]="reactiveForm" (ngSubmit)="save()" novalidate>
+      <div class="form-group">
+        <label class="text">Favor id:</label>
+        <input type="number" class="input form-control" formControlName="id" placeholder="id" ngModel>
+      </div>
+      <div class="form-group">
+        <label class="text">Favor favor name:</label>
+        <input type="text" class="input form-control" formControlName="favorName" placeholder="favor name" ngModel>
+      </div>
+      <div class="form-group">
+        <label class="text">Favor worker id:</label>
+        <input type="number" class="input form-control" formControlName="workerId" placeholder="worker Id" ngModel>
+      </div>
+      <div class="form-group">
+        <label class="text">Favor price:</label>
+        <input type="number" class="input form-control" formControlName="price" placeholder="price" ngModel>
+      </div>
+      <button class="btn" type="submit">SAVE</button>
+    </from>
+  </div>
+  <div class="box">
+    <h1 class="title">
+      UPDATE STATUS FAVOR
+    </h1>
+    <form [formGroup]="updateStatusForm" (ngSubmit)="updateStatus()" novalidate>
+      <div class="from-group">
+        <label class="text">Favor id:</label>
+        <input type="number" class="input form-control" formControlName="id" placeholder="id" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Favor status:</label>
+        <select class="input form-control" name="status" formControlName="status" ngModel>
+          <option value="PAID">PAID</option>
+          <option value="NOT_PAID">NOT_PAID</option>
+        </select>
+      </div>
+      <button class="btn" type="submit">UPDATE</button>
+    </form>>
+  </div>
+  <div class="item" *ngFor="let favor of favors">
+    id:{{favor.id}}<br>
+    carId:{{favor.favorName}}<br>
+    problem:{{favor.workerId}}<br>
+    date:{{favor.price}}
+  </div>
+</label>

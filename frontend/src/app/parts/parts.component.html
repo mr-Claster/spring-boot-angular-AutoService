@@ -1,0 +1,24 @@
+<label>
+  <div class="box">
+    <form [formGroup]="partForm" (ngSubmit)="save()" novalidate>
+      <div class="from-group">
+        <label class="text">Part id:</label>
+        <input type="number" class="input form-control" formControlName="id" placeholder="id" ngModel>
+      </div>
+      <div>
+        <label class="text">Part name:</label>
+        <input type="text" class="input form-control" formControlName="name" placeholder="name" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Part price:</label>
+        <input type="number" step="any" class="input form-control" formControlName="price" placeholder="price" ngModel>
+      </div>
+      <button class="btn" type="submit">SAVE</button>
+    </form>
+  </div>
+  <div class="item" *ngFor="let part of parts">
+    &nbsp;&nbsp;&nbsp;id:{{part.id}}<br>
+    &nbsp;&nbsp;&nbsp;name:{{part.name}}<br>
+    &nbsp;&nbsp;&nbsp;price:{{part.price}}
+  </div>
+</label>

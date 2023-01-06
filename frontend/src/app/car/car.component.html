@@ -1,0 +1,39 @@
+<label>
+  <div class="box">
+    <form [formGroup]="reactiveForm" (ngSubmit)="save()" novalidate>
+      <div class="from-group">
+        <label class="text">Car id:</label>
+        <input type="number" class="input form-control" formControlName="id" placeholder="id" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Car brand:</label>
+        <input type="text" class="input form-control" formControlName="brand" placeholder="brand" ngModel>
+      </div>
+      <div class="form-group">
+        <label class="text">Car model:</label>
+        <input type="text" class="input form-control" formControlName="model" placeholder="model" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Car year:</label>
+        <input type="number" step="any" class="input form-control" formControlName="year" placeholder="year" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Car serial number:</label>
+        <input type="text" class="input form-control" formControlName="serialNumber" placeholder="serial number" ngModel>
+      </div>
+      <div class="from-group">
+        <label class="text">Car owner/customer id:</label>
+        <input type="number" class="input form-control" formControlName="ownerId" placeholder="owner id" ngModel>
+      </div>
+      <button class="btn" type="submit">SAVE</button>
+    </form>
+  </div>
+  <div class="item" *ngFor="let car of cars">
+    id:{{car.id}}<br>
+    brand:{{car.brand}}<br>
+    model:{{car.model}}<br>
+    year:{{car.year}}<br>
+    serial_N:{{car.serialNumber}}<br>
+    ownerId:{{car.ownerId}}<br>
+  </div>
+</label>
