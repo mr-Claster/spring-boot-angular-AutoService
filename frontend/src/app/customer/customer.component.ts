@@ -18,12 +18,10 @@ export class CustomerComponent {
   orders: Array<Order> = [];
 
   constructor(
-    private http: HttpClient,
-    private location: Location
+    private http: HttpClient
   ) {}
 
   reactiveForm = new FormGroup({
-    id: new FormControl(0),
     firstName: new FormControl(''),
     lastName: new FormControl('')
   })
@@ -37,7 +35,6 @@ export class CustomerComponent {
   };
 
   save() {
-    let id = this.reactiveForm.controls.id.value;
     let firstName = this.reactiveForm.controls.firstName.value;
     let lastName = this.reactiveForm.controls.lastName.value;
     if (!firstName || !lastName) {
@@ -45,13 +42,8 @@ export class CustomerComponent {
     }
     firstName = firstName.trim();
     lastName = lastName.trim();
-    if (!id) {
-      this.createCustomer({firstName, lastName} as Customer)
-        .subscribe(customer => {this.customers.push(customer);});
-    } else {
-      this.updateCustomer({id, firstName, lastName} as Customer)
-        .subscribe(customer => {this.customers.push(customer);});
-    }
+    this.createCustomer({firstName, lastName} as Customer)
+      .subscribe(customer => {this.customers.push(customer);});
   }
 
   private createCustomer(customer: Customer): Observable<Customer> {
@@ -63,7 +55,7 @@ export class CustomerComponent {
   }
 
   getAllOrderById() {
-    let id = this.idForm.controls.id.value;
+    const id = this.idForm.controls.id.value;
     this.http.get<Array<Order>>(this.url+'/'+id+'/orders')
       .subscribe(responseOrders => this.orders = responseOrders);
   }

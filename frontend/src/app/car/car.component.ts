@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Location} from "@angular/common";
 import {GlobalConstants} from "../model/globalConstants";
-import {FormBuilder, FormControl, FormGroup, NgForm} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-car',
@@ -35,12 +35,12 @@ export class CarComponent {
   };
 
   save() {
-    let id = this.reactiveForm.controls.id.value;
-    let brand = this.reactiveForm.controls.brand.value;
-    let model = this.reactiveForm.controls.model.value;
-    let year = this.reactiveForm.controls.year.value;
-    let serialNumber = this.reactiveForm.controls.serialNumber.value;
-    let ownerId = this.reactiveForm.controls.ownerId.value;
+    const id = this.reactiveForm.controls.id.value;
+    const brand = this.reactiveForm.controls.brand.value;
+    const model = this.reactiveForm.controls.model.value;
+    const year = this.reactiveForm.controls.year.value;
+    const serialNumber = this.reactiveForm.controls.serialNumber.value;
+    const ownerId = this.reactiveForm.controls.ownerId.value;
     if(!brand || !model || !year
       || !serialNumber || !ownerId) {
       return;

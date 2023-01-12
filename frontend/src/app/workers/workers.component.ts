@@ -44,7 +44,7 @@ export class WorkersComponent {
   }
 
   save() {
-    let id = this.workerForm.controls.id.value;
+    const id = this.workerForm.controls.id.value;
     let firstName = this.workerForm.controls.firstName.value;
     let lastName = this.workerForm.controls.lastName.value;
     if (!firstName || !lastName) {
@@ -70,15 +70,15 @@ export class WorkersComponent {
   }
 
   getOrder() {
-    let id = this.workerIdForm.controls.id.value;
+    const id = this.workerIdForm.controls.id.value;
     if (!id) {return;}
     this.http.get<Array<Order>>(this.url+'/'+id+'/orders')
       .subscribe(orders => this.orders = orders);
   }
 
   getSalary() {
-    let workerId = this.salaryForm.controls.workerId.value;
-    let orderId = this.salaryForm.controls.orderId.value;
+    const workerId = this.salaryForm.controls.workerId.value;
+    const orderId = this.salaryForm.controls.orderId.value;
     if (!workerId) {return;}
     this.http.get<number>(this.url+'/'+workerId+'/orders/'+orderId+'/salary')
       .subscribe(salary => this.salary = salary);

@@ -39,10 +39,10 @@ export class FavorsComponent {
   }
 
   save() {
-    let id = this.reactiveForm.controls.id.value;
-    let favorName = this.reactiveForm.controls.favorName.value;
-    let workerId = this.reactiveForm.controls.workerId.value;
-    let price = this.reactiveForm.controls.workerId.value
+    const id = this.reactiveForm.controls.id.value;
+    const favorName = this.reactiveForm.controls.favorName.value;
+    const workerId = this.reactiveForm.controls.workerId.value;
+    const price = this.reactiveForm.controls.workerId.value
     if (!favorName || !workerId || !price) {
       return;
     }
@@ -64,8 +64,8 @@ export class FavorsComponent {
   }
 
   updateStatus() {
-    let id = this.updateStatusForm.controls.id.value;
-    let status = this.updateStatusForm.controls.status.value;
+    const id = this.updateStatusForm.controls.id.value;
+    const status = this.updateStatusForm.controls.status.value;
     this.http.put<Favor>(this.url+'/'+id+'/status?newStatus='+status, this.httpOptions)
       .subscribe(favor => {
         this.favors.push(favor)

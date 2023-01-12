@@ -18,7 +18,6 @@ export class OrdersComponent {
   totalPrice?: number;
 
   reactiveForm = new FormGroup({
-    id: new FormControl(0),
     carId: new FormControl(0),
     problemDescription: new FormControl(''),
     acceptanceDate: new FormControl(''),
@@ -54,20 +53,14 @@ export class OrdersComponent {
   };
 
   save() {
-    let id = this.reactiveForm.controls.id.value;
-    let carId = this.reactiveForm.controls.carId.value
-    let problemDescription = this.reactiveForm.controls.problemDescription.value;
-    let acceptanceDate = this.reactiveForm.controls.acceptanceDate.value;
+    const carId = this.reactiveForm.controls.carId.value
+    const problemDescription = this.reactiveForm.controls.problemDescription.value;
+    const acceptanceDate = this.reactiveForm.controls.acceptanceDate.value;
     if (!problemDescription || !acceptanceDate || !carId) {
       return;
     }
-    if (!id) {
-      return this.createOrder({carId, problemDescription, acceptanceDate} as Order)
-        .subscribe(order => this.orders.push(order));
-    } else {
-      return  this.updateOrder({id, carId, problemDescription, acceptanceDate} as Order)
-        .subscribe(order => this.orders.push(order));
-    }
+    return this.createOrder({carId, problemDescription, acceptanceDate} as Order)
+      .subscribe(order => this.orders.push(order));
   }
 
   updateOrder(order: Order): Observable<Order> {
@@ -79,16 +72,16 @@ export class OrdersComponent {
   }
 
   updateStatus() {
-    let id = this.statusOrderForm.controls.id.value;
-    let status = this.statusOrderForm.controls.status.value;
+    const id = this.statusOrderForm.controls.id.value;
+    const status = this.statusOrderForm.controls.status.value;
     this.http.put<Order>(this.url+'/'+id+'/status?newStatus='+status, this.httpOptions)
       .subscribe(order => this.orders.push(order));
   }
 
   addPart() {
-    let id = this.orderForm.controls.id.value;
-    let name = this.orderForm.controls.name.value;
-    let price = this.orderForm.controls.price.value;
+    const id = this.orderForm.controls.id.value;
+    const name = this.orderForm.controls.name.value;
+    const price = this.orderForm.controls.price.value;
     if (!id || !name || !price) {
       return;
     }
@@ -97,10 +90,10 @@ export class OrdersComponent {
   }
 
   addFavor() {
-    let id = this.favorForm.controls.orderId.value;
-    let favorName = this.favorForm.controls.favorName.value;
-    let workerId = this.favorForm.controls.workerId.value;
-    let price = this.favorForm.controls.price.value;
+    const id = this.favorForm.controls.orderId.value;
+    const favorName = this.favorForm.controls.favorName.value;
+    const workerId = this.favorForm.controls.workerId.value;
+    const price = this.favorForm.controls.price.value;
     if (!id || !favorName || !workerId || !price) {
       return;
     }
@@ -109,8 +102,8 @@ export class OrdersComponent {
   }
 
   getTotalPrice() {
-    let id = this.orderPriceForm.controls.id.value;
-    let bonus = this.orderPriceForm.controls.bonus.value;
+    const id = this.orderPriceForm.controls.id.value;
+    const bonus = this.orderPriceForm.controls.bonus.value;
     if (!id) {
       return;
     }

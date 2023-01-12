@@ -32,9 +32,9 @@ export class PartsComponent {
   };
 
   save(): void {
-    let id = this.partForm.controls.id.value;
+    const id = this.partForm.controls.id.value;
     let name = this.partForm.controls.name.value;
-    let price = this.partForm.controls.price.value;
+    const price = this.partForm.controls.price.value;
     if (!name || !price) {
       return;
     }
