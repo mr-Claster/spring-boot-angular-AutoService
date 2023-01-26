@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Order} from "../model/order";
-import {Observable} from "rxjs";
-import {Part} from "../model/part";
-import {Favor} from "../model/favor";
-import {GlobalConstants} from "../model/globalConstants";
-import {FormControl, FormGroup} from "@angular/forms";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Order} from '../model/order';
+import {Observable} from 'rxjs';
+import {Part} from '../model/part';
+import {Favor} from '../model/favor';
+import {GlobalConstants} from '../model/globalConstants';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-orders',

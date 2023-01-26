@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import {Favor} from "../model/favor";
+import {Favor} from '../model/favor';
 import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {GlobalConstants} from "../model/globalConstants";
-import {FormControl, FormGroup} from "@angular/forms";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {GlobalConstants} from '../model/globalConstants';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-favors',
@@ -15,7 +15,6 @@ export class FavorsComponent {
   favors: Array<Favor> = [];
 
   reactiveForm = new FormGroup({
-    id: new FormControl(0),
     favorName: new FormControl(''),
     workerId: new FormControl(0),
     price: new FormControl(0)
@@ -39,28 +38,18 @@ export class FavorsComponent {
   }
 
   save() {
-    const id = this.reactiveForm.controls.id.value;
     const favorName = this.reactiveForm.controls.favorName.value;
     const workerId = this.reactiveForm.controls.workerId.value;
     const price = this.reactiveForm.controls.workerId.value
     if (!favorName || !workerId || !price) {
       return;
     }
-    if (!id) {
-      this.createFavor({favorName, workerId, price} as Favor)
-        .subscribe(favor => {this.favors.push(favor);});
-    } else {
-      this.updateFavor({id, favorName, workerId} as Favor)
-        .subscribe(favor => {this.favors.push(favor);});
-    }
+    this.createFavor({favorName, workerId, price} as Favor)
+      .subscribe(favor => {this.favors.push(favor);});
   }
 
   createFavor(favor: Favor): Observable<Favor>{
     return this.http.post<Favor>(this.url, favor, this.httpOptions);
-  }
-
-  updateFavor(favor: Favor): Observable<Favor> {
-    return this.http.put<Favor>(this.url+'/'+favor.id, favor, this.httpOptions);
   }
 
   updateStatus() {

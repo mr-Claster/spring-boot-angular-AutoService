@@ -1,10 +1,6 @@
 <label>
   <div class="box">
     <form [formGroup]="partForm" (ngSubmit)="save()" novalidate>
-      <div class="from-group">
-        <label class="text">Part id:</label>
-        <input type="number" class="input form-control" formControlName="id" placeholder="id" ngModel>
-      </div>
       <div>
         <label class="text">Part name:</label>
         <input type="text" class="input form-control" formControlName="name" placeholder="name" ngModel>

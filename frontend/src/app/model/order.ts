@@ -1,5 +1,5 @@
-import {Favor} from "./favor";
-import {Part} from "./part";
+import {Favor} from './favor';
+import {Part} from './part';
 
 export interface Order {
   id: number;

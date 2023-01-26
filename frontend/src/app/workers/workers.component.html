@@ -4,10 +4,6 @@
       ADD/CREATE WORKER
     </h1>
     <form [formGroup]="workerForm" (ngSubmit)="save()" novalidate>
-      <div class="from-group">
-        <label class="text">Worker id:</label>
-        <input type="number" class="input form-control" formControlName="id" placeholder="id" ngModel>
-      </div>
       <div>
         <label class="text">Worker first name:</label>
         <input type="text" class="input form-control" formControlName="firstName" placeholder="first name" ngModel>

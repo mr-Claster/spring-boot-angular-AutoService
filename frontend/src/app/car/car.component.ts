@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {Car} from "../model/car";
-import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Location} from "@angular/common";
-import {GlobalConstants} from "../model/globalConstants";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {Car} from '../model/car';
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Location} from '@angular/common';
+import {GlobalConstants} from '../model/globalConstants';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-car',
@@ -16,7 +16,6 @@ export class CarComponent {
   cars: Array<Car> = [];
 
   reactiveForm = new FormGroup({
-    id: new FormControl(0),
     brand: new FormControl(''),
     model: new FormControl(''),
     year: new FormControl(0),
@@ -35,7 +34,6 @@ export class CarComponent {
   };
 
   save() {
-    const id = this.reactiveForm.controls.id.value;
     const brand = this.reactiveForm.controls.brand.value;
     const model = this.reactiveForm.controls.model.value;
     const year = this.reactiveForm.controls.year.value;
@@ -45,13 +43,8 @@ export class CarComponent {
       || !serialNumber || !ownerId) {
       return;
     }
-    if (!this.reactiveForm.value.id) {
-      this.createCar({brand, model, year, serialNumber, ownerId} as Car)
-        .subscribe(car => {this.cars.push(car);});
-    } else {
-      this.updateCar({id, brand, model, year, serialNumber, ownerId} as Car)
-        .subscribe(car => {this.cars.push(car);});
-    }
+    this.createCar({brand, model, year, serialNumber, ownerId} as Car)
+      .subscribe(car => {this.cars.push(car);});
   }
 
   private createCar(car: Car): Observable<Car> {

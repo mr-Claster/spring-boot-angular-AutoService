@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {Observable} from "rxjs";
-import {Order} from "../model/order";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Worker} from "../model/worker";
-import {GlobalConstants} from "../model/globalConstants";
-import {FormControl, FormGroup} from "@angular/forms";
+import {Observable} from 'rxjs';
+import {Order} from '../model/order';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Worker} from '../model/worker';
+import {GlobalConstants} from '../model/globalConstants';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-workers',
@@ -18,7 +18,6 @@ export class WorkersComponent {
   salary?: number;
 
   workerForm = new FormGroup({
-    id: new FormControl(0),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
   })
@@ -44,7 +43,6 @@ export class WorkersComponent {
   }
 
   save() {
-    const id = this.workerForm.controls.id.value;
     let firstName = this.workerForm.controls.firstName.value;
     let lastName = this.workerForm.controls.lastName.value;
     if (!firstName || !lastName) {
@@ -52,21 +50,12 @@ export class WorkersComponent {
     }
     firstName = firstName.trim();
     lastName = lastName.trim();
-    if (!id) {
-      this.createWorker({firstName, lastName} as Worker)
-        .subscribe(worker => this.workers.push(worker));
-    } else {
-      this.updateWorker({id, firstName, lastName} as Worker)
-        .subscribe(worker => this.workers.push(worker));
-    }
+    this.createWorker({firstName, lastName} as Worker)
+      .subscribe(worker => this.workers.push(worker));
   }
 
   private createWorker(worker: Worker): Observable<Worker> {
     return this.http.post<Worker>(this.url, worker, this.httpOptions).pipe();
-  }
-
-  private updateWorker(worker: Worker): Observable<Worker> {
-    return this.http.put<Worker>(this.url+'/'+worker.id, worker, this.httpOptions);
   }
 
   getOrder() {

@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import {Customer} from "../model/owner";
-import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Location} from "@angular/common";
-import {Order} from "../model/order";
-import {GlobalConstants} from "../model/globalConstants";
-import {FormControl, FormGroup} from "@angular/forms";
+import {Customer} from '../model/owner';
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Order} from '../model/order';
+import {GlobalConstants} from '../model/globalConstants';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-customer',

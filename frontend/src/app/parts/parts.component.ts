@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {Part} from "../model/part";
-import {Observable} from "rxjs";
+import {Part} from '../model/part';
+import {Observable} from 'rxjs';
 import { Location } from '@angular/common';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {GlobalConstants} from "../model/globalConstants";
-import {FormControl, FormGroup} from "@angular/forms";
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {GlobalConstants} from '../model/globalConstants';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-parts',
@@ -15,7 +15,6 @@ export class PartsComponent {
   parts: Array<Part> =[]
 
   partForm = new FormGroup({
-    id: new FormControl(0),
     name: new FormControl(''),
     price: new FormControl(0),
   })
@@ -32,20 +31,14 @@ export class PartsComponent {
   };
 
   save(): void {
-    const id = this.partForm.controls.id.value;
     let name = this.partForm.controls.name.value;
     const price = this.partForm.controls.price.value;
     if (!name || !price) {
       return;
     }
     name = name.trim();
-    if (!id) {
-      this.createPart({name, price} as Part)
-        .subscribe(part => {this.parts.push(part)});
-    } else {
-      this.updatePart({id, name, price} as Part)
-        .subscribe(part => {this.parts.push(part)});
-    }
+    this.createPart({name, price} as Part)
+      .subscribe(part => {this.parts.push(part)});
   }
 
   createPart(part: Part): Observable<Part> {
